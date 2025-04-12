@@ -1,5 +1,5 @@
 import time 
-
+import os
 #Display timer in MM:SS format
 #Have delay countdown to start pomodoro timer
 #Need a timer that visually counts down at 25 mins
@@ -26,4 +26,19 @@ def pomodoro_intro():
         else:
             print ("Let's start.")
 
-pomodoro_intro()
+def pomodoro_start():
+    x = 10
+    print (f"Starting at {x}.")
+    while True:
+        time.sleep(1)
+        os.system("cls")
+        if x != 0:
+            x -= 1
+            print (x)
+        if x == 0:
+            print ("Done!")
+            break
+
+
+
+pomodoro_start()
