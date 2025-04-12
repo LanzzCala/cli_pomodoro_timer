@@ -27,15 +27,16 @@ def pomodoro_intro():
             print ("Let's start.")
 
 def pomodoro_start():
-    x = 10
-    print (f"Starting at {x}.")
+    mins = 25
+    seconds = 60
+    print (f"Starting at {mins}:{seconds}")
     while True:
         time.sleep(1)
         os.system("cls")
-        if x != 0:
-            x -= 1
-            print (x)
-        if x == 0:
+        if seconds != 0:
+            seconds -= 1
+            print (f"{mins}:{seconds}")
+        if seconds == 0:
             print ("Done!")
             break
 
