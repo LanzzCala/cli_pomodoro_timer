@@ -1,6 +1,5 @@
 import time 
 
-#Have a start command for timer
 #Display timer in MM:SS format
 #Have delay countdown to start pomodoro timer
 #Need a timer that visually counts down at 25 mins
@@ -12,17 +11,19 @@ import time
 #Pause timer feature
 #Display feature for repeat
 
-def pomodoro():
+def pomodoro_intro():
     #Greeting message to intro Pomodoro timer
-    start = input("Welcome to your Pomodoro session. Ready to start? (Yes/No)".title())
     while True:
+        #Have a start command for timer
+        start = input("Welcome to your 25 minute Pomodoro session. Ready to start? (Yes/No) ").capitalize()
         if start == "No":
             print("No problem! Relaunch again when you're ready to start.")
             break
         elif start != "Yes" and start != "No":
             print("Invalid response. Please try again.")
+            print (start)
             continue
         else:
-            
+            print ("Let's start.")
 
-pomodoro()
+pomodoro_intro()
