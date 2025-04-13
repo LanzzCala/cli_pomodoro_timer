@@ -23,7 +23,13 @@ def pomodoro_intro():
             print(f"You entered {start} which is an invalid response. Please try again.")
             continue
         else:
-            print ("Let's start.")
+            seconds = 5
+            print ("Let's start. Starting in 5 seconds.")
+            while seconds:
+                print (seconds)
+                time.sleep(1)
+                os.system("cls")
+                seconds -=1
             return start
 
 def pomodoro_start(start):
@@ -34,7 +40,7 @@ def pomodoro_start(start):
         mins = 1
         seconds = 3
         #Display timer in MM:SS format
-        print (f"Starting at {mins}:{seconds:02}")
+        print (f"Starting your Pomodoro timer at {mins}:{seconds:02}")
         while True:
             #Have delay countdown to start pomodoro timer
             time.sleep(1)
