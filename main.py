@@ -55,7 +55,8 @@ def pomodoro_start(start):
                 print (f"{mins}:{seconds:02}")#Display timer in MM:SS format
             elif mins == 0 and seconds == 0:
                 print ("Done!")
-                timer_start == False
+                timer_start = False
+                os.system("cls")
         pomodoro_5_min_break(timer_start)
 
 
@@ -64,7 +65,7 @@ def pomodoro_5_min_break(timer_start):
         print("Break time!")
         mins = 5
         seconds = 0
-        timer_start == True
+        timer_start = True
         while timer_start == True:
             time.sleep(1)
             os.system("cls")
