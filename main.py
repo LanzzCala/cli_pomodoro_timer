@@ -35,7 +35,10 @@ def pomodoro_intro():
 
 def pomodoro_start(start):
     global pomodoros
-    if pomodoros != 0:
+    if pomodoros == 4:
+        pomodoros = 0
+        pomodoro_long_break()
+    elif pomodoros != 0:
         pomodoros += 1
     else:
         pomodoro = 0
@@ -48,7 +51,6 @@ def pomodoro_start(start):
         seconds = 5
         timer_start = True
         print ("Starting your Pomodoro timer!") #Display pomodoro is starting
-        print (f"Pomodoros: {pomodoros}")
         time.sleep(1) #Final value at 2
         while timer_start == True:
             time.sleep(1)
@@ -69,8 +71,13 @@ def pomodoro_start(start):
 
 #Timer starts 5 min rest timer
 def pomodoro_5_min_break(timer_start):
-    if timer_start == False:       
+    if timer_start == False:
+        if pomodoros == 4:
+            pomodoro_start(start='Yes')
+        else:
+            None
         print("Break time!")
+        print (f"Pomodoros: {pomodoros}")
         mins = 0
         seconds = 5
         timer_start = True
@@ -90,6 +97,26 @@ def pomodoro_5_min_break(timer_start):
                 os.system("cls")
                 pomodoro_start(start='Yes')
 
+def pomodoro_long_break():
+    print("Time for your long break. Great job!")
+    mins = 0
+    seconds = 10
+    timer_start = True
+    while timer_start == True:
+        time.sleep(1)
+        os.system("cls")
+        if mins != 0 and seconds == 0:
+            mins -= 1
+            seconds = 59
+            print (f"{mins}:{seconds:02}")#Display timer in MM:SS format
+        elif seconds != 0:
+            seconds -= 1
+            print (f"{mins}:{seconds:02}")#Display timer in MM:SS format
+        elif mins == 0 and seconds == 0:
+            print ("Back to work")
+            time.sleep(1)
+            os.system("cls")
+            pomodoro_start(start='Yes')
 
 
 pomodoro_start(pomodoro_intro())
