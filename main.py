@@ -1,9 +1,9 @@
 import time 
 import os
+import keyboard
 
 
 #Display pomodoro is ending
-#Alarm/notification for ending
 #Pause timer feature
 #Display feature for repeat
 
@@ -55,6 +55,9 @@ def pomodoro_start(start):
         while timer_start == True:
             time.sleep(1)
             os.system("cls")
+            event = keyboard.read_event() # CONTINUE FROM HERE
+            if event.event_type == keyboard.KEY_DOWN:
+                pause = input("Press space to continue.")
             if mins != 0 and seconds == 0:
                 mins -= 1
                 seconds = 59
