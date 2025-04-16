@@ -1,13 +1,12 @@
 import time 
 import os
 
-#Timer stops at 25 mins
-#Timer starts 5 min rest timer
-#Alarm/notification for starting
+
 #Display pomodoro is ending
 #Alarm/notification for ending
 #Pause timer feature
 #Display feature for repeat
+
 
 def pomodoro_intro():
     #Greeting message to intro Pomodoro timer
@@ -23,7 +22,7 @@ def pomodoro_intro():
         else:
             os.system("cls")
             seconds = 5
-            print ("Let's start. Starting in 5 seconds.")
+            print ("Let's start. Starting in 5 seconds.") #Alarm/notification for starting
             time.sleep(2)
             os.system("cls")
             while seconds:
@@ -57,14 +56,15 @@ def pomodoro_start(start):
                 print ("Done!")
                 timer_start = False
                 os.system("cls")
-        pomodoro_5_min_break(timer_start)
+        pomodoro_5_min_break(timer_start) #Timer stops at 25 mins 
 
 
+#Timer starts 5 min rest timer
 def pomodoro_5_min_break(timer_start):
     if timer_start == False:       
         print("Break time!")
-        mins = 5
-        seconds = 0
+        mins = 0
+        seconds = 5
         timer_start = True
         while timer_start == True:
             time.sleep(1)
@@ -83,4 +83,4 @@ def pomodoro_5_min_break(timer_start):
 
 
 
-pomodoro_start(pomodoro_intro())
+# pomodoro_start(pomodoro_intro())
