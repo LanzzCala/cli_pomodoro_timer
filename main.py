@@ -7,6 +7,7 @@ import os
 #Pause timer feature
 #Display feature for repeat
 
+pomodoros = 0
 
 def pomodoro_intro():
     #Greeting message to intro Pomodoro timer
@@ -33,6 +34,12 @@ def pomodoro_intro():
             return start
 
 def pomodoro_start(start):
+    global pomodoros
+    if pomodoros != 0:
+        pomodoros += 1
+    else:
+        pomodoro = 0
+        pomodoros = pomodoro + 1
     if start == "No":
         return None
     else:
@@ -41,7 +48,8 @@ def pomodoro_start(start):
         seconds = 5
         timer_start = True
         print ("Starting your Pomodoro timer!") #Display pomodoro is starting
-        time.sleep(2)
+        print (f"Pomodoros: {pomodoros}")
+        time.sleep(1) #Final value at 2
         while timer_start == True:
             time.sleep(1)
             os.system("cls")
@@ -78,9 +86,10 @@ def pomodoro_5_min_break(timer_start):
                 print (f"{mins}:{seconds:02}")#Display timer in MM:SS format
             elif mins == 0 and seconds == 0:
                 print ("Back to work")
-                timer_start == False
-                break
+                time.sleep(1)
+                os.system("cls")
+                pomodoro_start(start='Yes')
 
 
 
-# pomodoro_start(pomodoro_intro())
+pomodoro_start(pomodoro_intro())
