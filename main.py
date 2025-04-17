@@ -55,9 +55,6 @@ def pomodoro_start(start):
         while timer_start == True:
             time.sleep(1)
             os.system("cls")
-            event = keyboard.read_event() # CONTINUE FROM HERE
-            if event.event_type == keyboard.KEY_DOWN:
-                pause = input("Press space to continue.")
             if mins != 0 and seconds == 0:
                 mins -= 1
                 seconds = 59
@@ -103,7 +100,7 @@ def pomodoro_5_min_break(timer_start):
 def pomodoro_long_break():
     print("Time for your long break. Great job!")
     mins = 0
-    seconds = 10
+    seconds = 2
     timer_start = True
     while timer_start == True:
         time.sleep(1)
@@ -116,10 +113,24 @@ def pomodoro_long_break():
             seconds -= 1
             print (f"{mins}:{seconds:02}")#Display timer in MM:SS format
         elif mins == 0 and seconds == 0:
-            print ("Back to work")
-            time.sleep(1)
-            os.system("cls")
-            pomodoro_start(start='Yes')
+            while True:
+                finish = (input("Would you like another session? (Yes/No) ")).title()
+                print (finish)
+                if finish == "No":
+                    print("Good job today!")
+                    return
+                elif finish == "Yes":
+                    print ("Back to work")
+                    time.sleep(1)
+                    os.system("cls")
+                    pomodoro_start(start='Yes')
+                else:
+                    print("You entered an invalid response. Try again.")
+                
+            
 
 
-pomodoro_start(pomodoro_intro())
+
+# pomodoro_start(pomodoro_intro())
+
+pomodoro_long_break()
