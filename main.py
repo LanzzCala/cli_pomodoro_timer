@@ -8,6 +8,7 @@ import keyboard
 #Display feature for repeat
 
 pomodoros = 0
+global task
 
 def pomodoro_intro():
     #Greeting message to intro Pomodoro timer
@@ -38,6 +39,7 @@ def pomodoro_start(start):
     if pomodoros == 4:
         pomodoros = 0
         pomodoro_long_break()
+        return
     elif pomodoros != 0:
         pomodoros += 1
     else:
@@ -58,9 +60,11 @@ def pomodoro_start(start):
             if mins != 0 and seconds == 0:
                 mins -= 1
                 seconds = 59
+                print("Working...")
                 print (f"{mins}:{seconds:02}")#Display timer in MM:SS format
             elif seconds != 0:
                 seconds -= 1
+                ("Working...")
                 print (f"{mins}:{seconds:02}")#Display timer in MM:SS format
             elif mins == 0 and seconds == 0:
                 print ("Done!")
@@ -74,6 +78,8 @@ def pomodoro_5_min_break(timer_start):
     if timer_start == False:
         if pomodoros == 4:
             pomodoro_start(start='Yes')
+        elif task == "Complete":
+            None
         else:
             None
         print("Break time!")
@@ -88,9 +94,11 @@ def pomodoro_5_min_break(timer_start):
                 mins -= 1
                 seconds = 59
                 print (f"{mins}:{seconds:02}")#Display timer in MM:SS format
+                print ("Break time!")
             elif seconds != 0:
                 seconds -= 1
                 print (f"{mins}:{seconds:02}")#Display timer in MM:SS format
+                print ("Break time!")
             elif mins == 0 and seconds == 0:
                 print ("Back to work")
                 time.sleep(1)
@@ -118,19 +126,17 @@ def pomodoro_long_break():
                 print (finish)
                 if finish == "No":
                     print("Good job today!")
-                    return
+                    task = "Complete"
+                    return task
                 elif finish == "Yes":
-                    print ("Back to work")
                     time.sleep(1)
+                    print ("Sounds good. Back to work!")
+                    time.sleep(2)
                     os.system("cls")
                     pomodoro_start(start='Yes')
                 else:
                     print("You entered an invalid response. Try again.")
-                
-            
+        
 
 
-
-# pomodoro_start(pomodoro_intro())
-
-pomodoro_long_break()
+pomodoro_start(pomodoro_intro())
